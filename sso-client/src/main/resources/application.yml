@@ -1,0 +1,15 @@
+systemName: ASystem
+
+server:
+  port: 8081
+  context-path: /
+
+spring.h2.console:
+  enabled: true
+  path: /h2-console
+  
+logging.level:
+  root: warn
+  org.springframework:
+    boot: info
+  com.acompany.asystem: debug

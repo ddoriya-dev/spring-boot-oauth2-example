@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title th:text="'내 정보 - ' + ${systemName}"></title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/layout.css}" href="../css/layout.css" />
+<link rel="stylesheet" th:href="@{/css/bootstrap_modify.css}" href="../css/bootstrap_modify.css" />
+
+<style type="text/css">
+header {
+	margin-left: -30px;
+}
+</style>
+<style th:if="${systemName} == 'System2'" type="text/css">
+.navbar-default {
+    background-color: #21487d;
+    border-color: #21487d;
+}
+</style>
+<style th:if="${systemName} != 'System1' and ${systemName} != 'System2'" type="text/css">
+.navbar-default {
+    background-color: #25251e;
+    border-color: #25251e;
+}
+</style>
+</head>
+<body>
+
+<!-- 메뉴 -->
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" th:href="@{/me}" th:text="${systemName}">시스템</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a th:href="@{/me}">홈</a></li>
+			</ul>
+			<ul th:if="${session.user} == null" class="nav navbar-nav navbar-right">
+				<li><a th:href="@{/sso}">로그인</a></li>
+			</ul>
+			<ul th:if="${session.user} != null" class="nav navbar-nav navbar-right">
+				<li><a th:href="@{/logout}">로그아웃
+						[<span th:text="${session.user.userName}"></span>]</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Header ========================================================================================== -->
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-lg-12">
+				<ol class="breadcrumb">
+					<li><a href="#">내 정보</a></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Container ======================================================================================= -->
+<div class="container">
+	<div class="row">
+	
+		<div th:if="${session.user} != null" th:object="${user}">
+			<h5><span class="label label-default">이름</span> <span th:text="*{userName}">UserName</span></h5>
+			<h5><span class="label label-default">나이</span> <span th:text="*{age}">Age</span></h5>
+			<h5><span class="label label-default">메모</span> <span th:text="*{memo}">Memo</span></h5>
+		</div>
+		<div th:if="${session.user} == null" class="col-sm-9 col-lg-9">
+			<h5><span class="label label-default">로그인하지 않았습니다.</span></h5>
+		</div>
+
+	</div>
+
+	<footer>
+		<hr />
+		<ul class="nav nav-pills">
+			<li class="pull-right"><a href="#top">위로 이동</a></li>
+			<li><a href="#">커뮤니티 홈</a></li>
+			<li><a href="#">RSS</a></li>
+			<li><a href="#">이용약관</a></li>
+			<li><a href="#">도움말</a></li>
+			<li><a href="#">회원탈퇴</a></li>
+		</ul>
+		<p>© SSO 2020.</p>
+
+	</footer>
+
+</div>
+
+<script type="text/javascript" src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+	var systemName = /*[[${systemName}]]*/ 'system';
+/*]]>*/
+</script>
+</body>
+</html>

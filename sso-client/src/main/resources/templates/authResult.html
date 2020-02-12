@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<title>Auth Result</title>
+</head>
+<body>
+	<h2>Auth Result</h2>
+	<br />
+	<p>Result : <span th:text="${result}"></span></p>
+	
+	<br />
+	<div th:if="${result.error} == null">
+		<p><a th:href="@{/me}">My Info</a></p>
+	</div>
+    
+</body>
+</html>
