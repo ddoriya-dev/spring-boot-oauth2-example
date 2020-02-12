@@ -1,7 +1,5 @@
 package com.ddoriya.sso.server;
 
-import javax.sql.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,8 @@ import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeSe
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
@@ -36,7 +36,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	
 	@Autowired
 	private ApprovalStore approvalStore;
-	
+
 	@Autowired
 	private TokenStore tokenStore;
 	
@@ -50,11 +50,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 			.approvalStore(approvalStore);
 	}
 
-//	@Override
-//	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-//		//
-//	}
-	
 	@Bean
 	public AuthorizationCodeServices jdbcAuthorizationCodeServices(DataSource dataSource) {
 		//
