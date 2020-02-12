@@ -1,4 +1,4 @@
-package com.playd.sso.server.web;
+package com.ddoriya.sso.server.web;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.playd.sso.server.domain.AccessToken;
-import com.playd.sso.server.domain.UserInfoResponse;
-import com.playd.sso.server.service.SsoService;
+import com.ddoriya.sso.server.domain.AccessToken;
+import com.ddoriya.sso.server.domain.UserInfoResponse;
+import com.ddoriya.sso.server.service.SsoService;
 
 @Controller
 public class SsoController {

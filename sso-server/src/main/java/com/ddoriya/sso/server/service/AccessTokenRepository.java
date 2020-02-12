@@ -1,10 +1,10 @@
-package com.playd.sso.server.service;
+package com.ddoriya.sso.server.service;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.playd.sso.server.domain.AccessToken;
+import com.ddoriya.sso.server.domain.AccessToken;
 
 public interface AccessTokenRepository extends CrudRepository<AccessToken, String> {
 	//

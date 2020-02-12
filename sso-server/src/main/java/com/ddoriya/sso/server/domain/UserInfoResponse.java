@@ -1,4 +1,4 @@
-package com.playd.sso.server.domain;
+package com.ddoriya.sso.server.domain;
 
 public class UserInfoResponse {
 	//

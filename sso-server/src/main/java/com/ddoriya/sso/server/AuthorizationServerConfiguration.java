@@ -1,4 +1,4 @@
-package com.playd.sso.server;
+package com.ddoriya.sso.server;
 
 import javax.sql.DataSource;
 

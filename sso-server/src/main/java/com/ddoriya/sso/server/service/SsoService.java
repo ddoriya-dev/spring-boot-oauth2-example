@@ -1,6 +1,6 @@
-package com.playd.sso.server.service;
+package com.ddoriya.sso.server.service;
 
-import com.playd.sso.server.domain.AccessToken;
+import com.ddoriya.sso.server.domain.AccessToken;
 
 public interface SsoService {
 	//

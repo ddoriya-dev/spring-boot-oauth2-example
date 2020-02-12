@@ -1,4 +1,4 @@
-package com.playd.sso.server.service;
+package com.ddoriya.sso.server.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,8 +27,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.playd.sso.server.domain.AccessToken;
-import com.playd.sso.server.domain.Client;
+import com.ddoriya.sso.server.domain.AccessToken;
+import com.ddoriya.sso.server.domain.Client;
 
 @Service("ssoService")
 public class SsoServiceImpl implements SsoService {

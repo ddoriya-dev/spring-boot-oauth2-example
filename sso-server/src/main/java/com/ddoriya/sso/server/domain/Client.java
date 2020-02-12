@@ -1,4 +1,4 @@
-package com.playd.sso.server.domain;
+package com.ddoriya.sso.server.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
