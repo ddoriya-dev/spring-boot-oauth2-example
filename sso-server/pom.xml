@@ -9,8 +9,6 @@
 	<description>SSO Server</description>
 	<version>0.0.1-SNAPSHOT</version>
 	
-	<url>http://www.nextree.co.kr</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
