@@ -1,5 +1,6 @@
 package com.acompany.asystem;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -44,7 +45,7 @@ public class ASystemApplication {
 			for (User user : repository.findAll()) {
 				log.debug("\n## found user : {}", user);
 			}
-			User user = repository.findOne("jmpark");
+			Optional<User> user = repository.findById("jmpark");
 			log.debug("\n## user : {}", user);
 		};
 	}

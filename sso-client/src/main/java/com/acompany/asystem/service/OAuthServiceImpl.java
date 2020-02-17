@@ -13,6 +13,7 @@ import java.util.Base64.Encoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -78,8 +79,8 @@ public class OAuthServiceImpl implements OAuthService {
 			tokenRequestResult.setError(userInfoResponse.getMessage());
 			return tokenRequestResult;
 		}
-		User user = userService.getUser(userInfoResponse.getUserName());
-		request.getSession().setAttribute("user", user);
+		Optional<User> user = userService.getUser(userInfoResponse.getUserName());
+		request.getSession().setAttribute("user", user.get());
 		String userName = userInfoResponse.getUserName();
 		
 		userService.updateTokenId(userName, extractTokenId(tokenRequestResult.getAccessToken()));
@@ -93,13 +94,13 @@ public class OAuthServiceImpl implements OAuthService {
 		Response response = new Response();
 		
 		log.debug("\n## logout {}", userName);
-		User user = userService.getUser(userName);
-		if (user == null || user.getTokenId() == null) {
+		Optional<User> user = userService.getUser(userName);
+		if (user == null || user.get().getTokenId() == null) {
 			//
 			return response;
 		}
 		
-		String savedTokenId = user.getTokenId();
+		String savedTokenId = user.get().getTokenId();
 		log.debug("\n## in logout savedTokenId, tokenId : '{}', '{}'", savedTokenId, tokenId);
 		if (tokenId.equals(savedTokenId) == false) {
 			//

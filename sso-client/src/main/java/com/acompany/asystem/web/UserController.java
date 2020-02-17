@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.acompany.asystem.domain.User;
 import com.acompany.asystem.service.UserService;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
 	//
@@ -38,16 +40,16 @@ public class UserController {
 			//
 			return viewName;
 		}
-		
-		user = service.getUser(user.getUserName());
-		log.debug("\n## user : {}", user);
-		if (user.getTokenId() == null) {
+
+		Optional<User> userOptional = service.getUser(user.getUserName());
+		log.debug("\n## user : {}", userOptional);
+		if (userOptional.get().getTokenId() == null) {
 			//
 			request.getSession().removeAttribute("user");
 		}
 		else {
 			//
-			map.put("user", user);
+			map.put("user", userOptional.get());
 		}
 		
 		return viewName;

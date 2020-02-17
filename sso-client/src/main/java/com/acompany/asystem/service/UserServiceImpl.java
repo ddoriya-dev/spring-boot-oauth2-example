@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.acompany.asystem.domain.User;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 	//
@@ -12,18 +14,18 @@ public class UserServiceImpl implements UserService {
 	private UserRepository repository;
 	
 	@Override
-	public User getUser(String userName) {
+	public Optional<User> getUser(String userName) {
 		//
-		return repository.findOne(userName);
+		return repository.findById(userName);
 	}
 	
 	@Override
 	public boolean updateTokenId(String userName, String tokenId) {
 		//
-		User user = repository.findOne(userName);
-		user.setTokenId(tokenId);
+		Optional<User> user = repository.findById(userName);
+		user.get().setTokenId(tokenId);
 		
-		repository.save(user);
+		repository.save(user.get());
 		return true;
 	}
 }
